@@ -16,8 +16,8 @@ var style = {
     }
 };
 
-var width = 5;
-var height = 4;
+var width = 3;
+var height = 3;
 
 function noop(){
     console.log("tick");
@@ -31,7 +31,7 @@ var GameApp = React.createClass({
         },
 
         componentDidMount: function(){
-            setInterval(this._updateGrid, 3000);
+            setInterval(this._updateGrid, 1000);
         },
 
         _updateGrid: function(){

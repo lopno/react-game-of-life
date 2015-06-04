@@ -4,7 +4,7 @@ var gridUpdate = Reflux.createAction();
 
 var GridUtil = {
     calculateNextGenerationForGrid: function(grid){
-        var newGrid = [[]];
+        var newGrid = [];
 
         for(var i = 0; i < grid.length; i++) {
             newGrid[i] = [];
@@ -29,36 +29,35 @@ var GridUtil = {
                     }
                 }
                 //up right
-                if(i > 0 && j < grid.length - 1){
+                if(i > 0 && j < grid[i].length - 1){
                     if(grid[i - 1][j + 1]){
                         neighbours++;
                     }
                 }
                 //right
-                if(j < grid.length - 1){
+                if(j < grid[i].length - 1){
                     if(grid[i][j + 1]){
                         neighbours++
                     }
                 }
                 //down right
-                if(j < grid.length - 1 && i < grid[i].length - 1){
+                if(j < grid[i].length - 1 && i < grid.length - 1){
                     if(grid[i + 1][j + 1]){
                         neighbours++;
                     }
                 }
                 //down
-                if(i < grid[i].length - 1){
+                if(i < grid.length - 1){
                     if(grid[i + 1][j]){
                         neighbours++;
                     }
                 }
                 //down left
-                if(j > 0 && i < grid[i].length - 1){
+                if(j > 0 && i < grid.length - 1){
                     if(grid[i + 1][j - 1]){
                         neighbours++;
                     }
                 }
-
                 //Check the 4 rules
 
                 //dead cell
@@ -71,7 +70,7 @@ var GridUtil = {
                 else{
                     if(neighbours < 2 || neighbours > 3){
                         newGrid[i][j] = false;
-                    } else{
+                    } else if(neighbours === 2 || neighbours === 3){
                         newGrid[i][j] = true;
                     }
                 }
@@ -86,9 +85,9 @@ var GridUtil = {
     initializeGrid: function(width, height) {
         var newGrid = [];
 
-        for (var i = 0; i < width; i++) {
+        for (var i = 0; i < height; i++) {
             newGrid[i] = [];
-            for (var j = 0; j < height; j++) {
+            for (var j = 0; j < width; j++) {
                 newGrid[i][j] = (parseInt(Math.random() * 10000) % 2) == 1 ? true : false;
             }
         }

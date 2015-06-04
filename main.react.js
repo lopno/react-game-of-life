@@ -16,28 +16,39 @@ var style = {
     }
 };
 
-var width = 50;
-var height = 50;
+var width = 75;
+var height = 75;
 
 var GameApp = React.createClass({
         getInitialState: function(){
             return {
-                grid:GridUtil.initializeGrid(width,height)
+                grid:GridUtil.initializeGrid(width,height),
+                active: false
             }
         },
 
         componentDidMount: function(){
-            setInterval(this._updateGrid, 1000);
+            setInterval(this._updateGrid, 1);
         },
 
         _updateGrid: function(){
+
+            if(this.state.active){
+                this.setState({
+                    grid: GridUtil.calculateNextGenerationForGrid(this.state.grid)
+                });
+            }
+        },
+
+        _start: function(){
             this.setState({
-                grid: GridUtil.calculateNextGenerationForGrid(this.state.grid)
+                active: true
             })
         },
 
         render: function () {
-            return (<div style={{border: "1px red"}}>
+            return (<div>
+                    <button onClick={this._start}>Start</button>
                     {this.state.grid.map(function(row){
                         return (<div style={{height:10}}>{row.map(function(cell){
                             if(cell){

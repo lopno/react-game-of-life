@@ -42,13 +42,13 @@ var GameApp = React.createClass({
 
         _start: function(){
             this.setState({
-                active: true
+                active: !this.state.active
             })
         },
 
         render: function () {
             return (<div>
-                    <button onClick={this._start}>Start</button>
+                    <button onClick={this._start}>{this.state.active ? "pause" : "start"}</button>
                     {this.state.grid.map(function(row){
                         return (<div style={{height:10}}>{row.map(function(cell){
                             if(cell){

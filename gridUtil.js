@@ -95,6 +95,18 @@ var GridUtil = {
             }
         }
         return newGrid;
+    },
+
+    emptyGrid: function(width, height) {
+        var newGrid = [];
+
+        for (var i = 0; i < height; i++) {
+            newGrid[i] = [];
+            for (var j = 0; j < width; j++) {
+                newGrid[i][j] = false;
+            }
+        }
+        return newGrid;
     }
 };
 

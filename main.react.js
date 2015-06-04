@@ -22,7 +22,7 @@ var height = 75;
 var GameApp = React.createClass({
         getInitialState: function(){
             return {
-                grid:GridUtil.initializeGrid(width,height),
+                grid:GridUtil.emptyGrid(width,height),
                 active: false
             }
         },
@@ -56,9 +56,27 @@ var GameApp = React.createClass({
             }
         },
 
+        _randomize: function(){
+            if(!this.state.active){
+                this.setState({
+                    grid: GridUtil.initializeGrid(width,height)
+                })
+            }
+        },
+
+        _clear: function(){
+            if(!this.state.active){
+                this.setState({
+                    grid: GridUtil.emptyGrid(width,height)
+                })
+            }
+        },
+
         render: function () {
             return (<div>
                     <button onClick={this._start}>{this.state.active ? "pause" : "start"}</button>
+                    <button onClick={this._randomize}>Randomize</button>
+                    <button onClick={this._clear}>Clear</button>
                     {this.state.grid.map(function(row, i){
                         return (<div style={{height:10}}>{row.map(function(cell, j){
                             if(cell){

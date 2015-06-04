@@ -75,3 +75,5 @@ function calculateNextGenerationForGrid(grid){
 
     return newGrid;
 }
+
+module.exports = calculateNextGenerationForGrid;

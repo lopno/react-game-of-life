@@ -17,9 +17,10 @@
   },
   "homepage": "https://github.com/lopno/react-game-of-life#readme",
   "dependencies": {
-    "react": "^0.13.3",
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",
+    "react": "^0.13.3",
+    "reflux": "^0.2.7",
     "watchify": "^3.2.1"
   },
   "devDependencies": {},

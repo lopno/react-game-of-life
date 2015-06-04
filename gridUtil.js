@@ -1,3 +1,7 @@
+var Reflux = require('reflux');
+
+var gridUpdate = Reflux.createAction();
+
 var GridUtil = {
     calculateNextGenerationForGrid: function(grid){
         var newGrid;
@@ -74,6 +78,8 @@ var GridUtil = {
             }
         }
 
+
+        gridUpdate(newGrid);
         return newGrid;
     },
 
@@ -89,5 +95,6 @@ var GridUtil = {
         return newGrid;
     }
 };
+
 
 module.exports = GridUtil;

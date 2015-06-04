@@ -16,12 +16,8 @@ var style = {
     }
 };
 
-var width = 3;
-var height = 3;
-
-function noop(){
-    console.log("tick");
-}
+var width = 50;
+var height = 50;
 
 var GameApp = React.createClass({
         getInitialState: function(){

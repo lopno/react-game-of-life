@@ -65,6 +65,9 @@ var GridUtil = {
                     if(neighbours === 3){
                         newGrid[i][j] = true;
                     }
+                    else{
+                        newGrid[i][j] = false;
+                    }
                 }
                 //live cell
                 else{

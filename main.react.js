@@ -46,18 +46,28 @@ var GameApp = React.createClass({
             })
         },
 
+        _flip: function(row,column,alive){
+            if(!this.state.active){
+                var newGrid = this.state.grid;
+                newGrid[row][column] = !alive;
+                this.setState({
+                    grid: newGrid
+                });
+            }
+        },
+
         render: function () {
             return (<div>
                     <button onClick={this._start}>{this.state.active ? "pause" : "start"}</button>
-                    {this.state.grid.map(function(row){
-                        return (<div style={{height:10}}>{row.map(function(cell){
+                    {this.state.grid.map(function(row, i){
+                        return (<div style={{height:10}}>{row.map(function(cell, j){
                             if(cell){
-                                return <div style={style.cellAlive}></div>
+                                return <div style={style.cellAlive} onClick={this._flip.bind(this,i,j,true)}></div>
                             }else{
-                                return <div style={style.cellDead}></div>
+                                return <div style={style.cellDead} onClick={this._flip.bind(this,i,j,false)}></div>
                             }
-                        })}</div>)
-                    })}
+                        }.bind(this))}</div>)
+                    }.bind(this))}
                 </div>
             );
         }

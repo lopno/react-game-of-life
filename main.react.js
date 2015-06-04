@@ -10,10 +10,13 @@ var style = {
     }
 };
 
+var width = 10;
+var height = 10;
+
 var GameApp = React.createClass({
         getInitialState: function(){
             return {
-                grid:GridUtil.initializeGrid(10,10)
+                grid:GridUtil.initializeGrid(width,height)
             }
         },
         render: function () {

@@ -3,12 +3,16 @@
  */
 var Reflux = require('reflux');
 
+
+var board;
+
 var gridStore = Reflux.createStore({
     init: function() {
         this.listenTo(gridUpdate, this.output);
     },
-    output: function(flag) {
-        var status = flag ? 'ONLINE' : 'OFFLINE';
+
+    output: function(grid) {
+        board = grid;
         this.trigger(status);
     }
 });

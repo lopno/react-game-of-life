@@ -16,8 +16,8 @@ var style = {
     }
 };
 
-var width = 50;
-var height = 50;
+var width = 5;
+var height = 4;
 
 function noop(){
     console.log("tick");
@@ -41,7 +41,7 @@ var GameApp = React.createClass({
         },
 
         render: function () {
-            return (<div>
+            return (<div style={{border: "1px red"}}>
                     {this.state.grid.map(function(row){
                         return (<div style={{height:10}}>{row.map(function(cell){
                             if(cell){

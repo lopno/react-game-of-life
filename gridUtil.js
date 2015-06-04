@@ -6,9 +6,9 @@ var GridUtil = {
     calculateNextGenerationForGrid: function(grid){
         var newGrid = [[]];
 
-        for(var i = 0; i < grid.length; i++) {
-            newGrid[i] = [];
-            for(var j = 0; j < grid[i].length; j++) {
+        for(var j = 0; j < grid.length; j++) {
+            newGrid[j] = [];
+            for(var i = 0; i < grid[i].length; i++) {
                 var neighbours = 0;
                 //left
                 if(i > 0){
@@ -29,31 +29,31 @@ var GridUtil = {
                     }
                 }
                 //up right
-                if(j > 0 && i < i.length - 1){
+                if(j > 0 && i < grid[i].length - 1){
                     if(grid[i + 1][j-1]){
                         neighbours++;
                     }
                 }
                 //right
-                if(i < i.length - 1){
+                if(i < grid[i].length - 1){
                     if(grid[i + 1][j]){
                         neighbours++
                     }
                 }
                 //down right
-                if(i < i.length - 1 && j < j.length - 1){
+                if(i < grid[i].length - 1 && j < grid.length - 1){
                     if(grid[i + 1][j + 1]){
                         neighbours++;
                     }
                 }
                 //down
-                if(j < j.length - 1){
+                if(j < grid.length - 1){
                     if(grid[i][j + 1]){
                         neighbours++;
                     }
                 }
                 //down left
-                if(i > 0 && j < j.length - 1){
+                if(i > 0 && j < grid.length - 1){
                     if(grid[i - 1][j + 1]){
                         neighbours++;
                     }

@@ -5,19 +5,23 @@ var style = {
     cellDead:{
         width:10,
         height:10,
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         float:'left'
     },
     cellAlive:{
         width:10,
         height:10,
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         float:'left'
     }
 };
 
-var width = 10;
-var height = 10;
+var width = 50;
+var height = 50;
+
+function noop(){
+    console.log("tick");
+}
 
 var GameApp = React.createClass({
         getInitialState: function(){
@@ -25,6 +29,17 @@ var GameApp = React.createClass({
                 grid:GridUtil.initializeGrid(width,height)
             }
         },
+
+        componentDidMount: function(){
+            setInterval(this._updateGrid, 3000);
+        },
+
+        _updateGrid: function(){
+            this.setState({
+                grid: GridUtil.calculateNextGenerationForGrid(this.state.grid)
+            })
+        },
+
         render: function () {
             return (<div>
                     {this.state.grid.map(function(row){

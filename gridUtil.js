@@ -4,11 +4,11 @@ var gridUpdate = Reflux.createAction();
 
 var GridUtil = {
     calculateNextGenerationForGrid: function(grid){
-        var newGrid;
+        var newGrid = [[]];
 
         for(var i = 0; i < grid.length; i++) {
-            var column = grid[i];
-            for(var j = 0; j < column.length; j++) {
+            newGrid[i] = [];
+            for(var j = 0; j < grid[i].length; j++) {
                 var neighbours = 0;
                 //left
                 if(i > 0){

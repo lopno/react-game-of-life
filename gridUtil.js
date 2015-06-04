@@ -89,7 +89,7 @@ var GridUtil = {
         for (var i = 0; i < width; i++) {
             newGrid[i] = [];
             for (var j = 0; j < height; j++) {
-                newGrid[i][j] = Math.random() % 2 == 0 ? true : false;
+                newGrid[i][j] = (parseInt(Math.random() * 10000) % 2) == 1 ? true : false;
             }
         }
         return newGrid;

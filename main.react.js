@@ -2,10 +2,16 @@ var React = require('react');
 var GridUtil = require('./gridUtil');
 
 var style = {
-    cell:{
+    cellDead:{
         width:10,
         height:10,
         backgroundColor: 'black',
+        float:'left'
+    },
+    cellAlive:{
+        width:10,
+        height:10,
+        backgroundColor: 'white',
         float:'left'
     }
 };
@@ -23,7 +29,11 @@ var GameApp = React.createClass({
             return (<div>
                     {this.state.grid.map(function(row){
                         return (<div style={{height:10}}>{row.map(function(cell){
-                            return <div style={style.cell}></div>
+                            if(cell){
+                                return <div style={style.cellAlive}></div>
+                            }else{
+                                return <div style={style.cellDead}></div>
+                            }
                         })}</div>)
                     })}
                 </div>

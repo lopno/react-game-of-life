@@ -78,14 +78,15 @@ var GridUtil = {
     },
 
     initializeGrid: function(width, height) {
-        var newGrid;
+        var newGrid = [];
 
-        for (var i = 0; i < grid.length; i++) {
-            var column = grid[i];
-            for (var j = 0; j < column.length; j++) {
+        for (var i = 0; i < width; i++) {
+            newGrid[i] = [];
+            for (var j = 0; j < height; j++) {
                 newGrid[i][j] = Math.random() % 2 == 0 ? true : false;
             }
         }
+        return newGrid;
     }
 };
 
